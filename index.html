@@ -235,6 +235,7 @@
   <div class="tabs">
     <div class="tab active" data-tab="tracker">Tracker</div>
     <div class="tab" data-tab="deepdives">Deep Dives</div>
+    <div class="tab" data-tab="independent">Interesting Projects</div>
     <div class="tab" data-tab="roadmap">Roadmap</div>
   </div>
 
@@ -259,6 +260,14 @@
       <div class="section-desc">separate from the tracker. published rarely — only when a project is worth the actual on-chain digging.</div>
       <div id="deepdiveWrap">
         <div class="empty-state">NO DEEP DIVES PUBLISHED YET.</div>
+      </div>
+    </div>
+
+    <div class="panel-section" id="panel-independent">
+      <div class="section-title">Interesting Projects</div>
+      <div class="section-desc">independent research, not tied to the tracker or any tickers big accounts are pushing — any chain, published because it was worth digging into.</div>
+      <div id="independentWrap">
+        <div class="empty-state">NOTHING PUBLISHED YET.</div>
       </div>
     </div>
 
@@ -375,34 +384,41 @@
         data.lockedCount > 0 ? `${data.lockedCount} MORE DISPATCHES LOGGED TODAY` : 'FULL ROSTER COMING SOON';
     }
 
-    const ddWrap = document.getElementById('deepdiveWrap');
-    if (data.deepdives && data.deepdives.length) {
-      ddWrap.innerHTML = data.deepdives.map((dd, i) => {
-        const verdictClass = dd.verdict === 'pass' ? 'pass' : 'reject';
-        const verdictText = dd.verdict === 'pass' ? 'CLEARED' : 'REJECTED';
-        const sourceLine = dd.source ? `<div class="dd-source">SOURCE: ${esc(dd.source)}</div>` : '';
-        return `<div class="deepdive" data-dd="${i}">
-          <div class="dd-head">
-            <span class="dd-title">${esc(dd.title)}</span>
-            <span class="dd-date">FIELD REPORT — ${esc(dd.date)}</span>
-          </div>
-          <div class="dd-verdict ${verdictClass}">${verdictText}</div>
-          ${dd.teaser ? `<div class="dd-teaser">${dd.teaser}</div>` : ''}
-          <div class="dd-body" id="dd-body-${i}">${dd.body}${sourceLine}</div>
-          <div class="dd-expand" id="dd-toggle-${i}">+ read full report</div>
-        </div>`;
-      }).join('');
+    renderDeepdiveList(data.deepdives, 'deepdiveWrap', 'dd');
+    renderDeepdiveList(data.independent, 'independentWrap', 'ip');
+  }
 
-      document.querySelectorAll('.deepdive').forEach(card => {
-        card.addEventListener('click', () => {
-          const i = card.dataset.dd;
-          const body = document.getElementById('dd-body-' + i);
-          const toggle = document.getElementById('dd-toggle-' + i);
-          const isOpen = body.classList.toggle('open');
-          toggle.textContent = isOpen ? '− collapse' : '+ read full report';
-        });
+  function renderDeepdiveList(items, wrapId, prefix) {
+    const wrap = document.getElementById(wrapId);
+    if (!items || !items.length) return;
+
+    wrap.innerHTML = items.map((dd, i) => {
+      const verdictClass = dd.verdict === 'pass' ? 'pass' : 'reject';
+      const verdictText = dd.verdict === 'pass' ? 'CLEARED' : 'REJECTED';
+      const sourceLine = dd.source ? `<div class="dd-source">SOURCE: ${esc(dd.source)}</div>` : '';
+      const chainTag = dd.chain ? `<span class="dd-date">${esc(dd.chain)}</span>` : '';
+      return `<div class="deepdive" data-id="${prefix}-${i}">
+        <div class="dd-head">
+          <span class="dd-title">${esc(dd.title)}</span>
+          <span class="dd-date">FIELD REPORT — ${esc(dd.date)}${dd.chain ? ' — ' + esc(dd.chain) : ''}</span>
+        </div>
+        <div class="dd-verdict ${verdictClass}">${verdictText}</div>
+        ${dd.teaser ? `<div class="dd-teaser">${dd.teaser}</div>` : ''}
+        <div class="dd-body" id="body-${prefix}-${i}">${dd.body}${sourceLine}</div>
+        <div class="dd-expand" id="toggle-${prefix}-${i}">+ read full report</div>
+      </div>`;
+    }).join('');
+
+    wrap.querySelectorAll('.deepdive').forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.dataset.id;
+        const body = document.getElementById('body-' + id);
+        const toggle = document.getElementById('toggle-' + id);
+        const isOpen = body.classList.toggle('open');
+        toggle.textContent = isOpen ? '− collapse' : '+ read full report';
       });
-    }
+    });
+  }
   }
 
   loadData();

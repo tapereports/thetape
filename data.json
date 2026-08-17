@@ -28,5 +28,25 @@
       "source": "on-chain data via Solana/Blockscout-equivalent scan · social data via Sorsa · pulled 2026-08-17"
     }
   ],
+  "independent": [
+    {
+      "title": "PONS",
+      "date": "2026",
+      "chain": "Robinhood Chain",
+      "verdict": "pass",
+      "teaser": "Fixed supply, over a quarter of it permanently burned, no owner privileges in the contract at all. One of the cleaner setups reviewed here.",
+      "body": "<h4>Supply</h4><ul><li>1,000,000,000 fixed</li><li>267,718,379 sitting in the burn address — <b>26.8% permanently destroyed</b>. Not locked, not vested. Gone.</li></ul><h4>Holders</h4><ul><li>24,646 holders</li><li>Spread against the ~732M remaining supply:<ul><li>Biggest non-pool wallet ≈ 1.9%</li><li>Second ≈ 1.7%</li><li>Third ≈ 1.4%</li></ul></li><li>No wallet holds 2%. Smooth taper down from there — no cluster of matching balances, which is what coordinated insider allocation usually looks like.</li></ul><h4>Contract</h4>This is where it gets genuinely interesting. <b>There is no owner.</b> No Ownable pattern, no onlyOwner modifier, anywhere in the source. Which means there is no:<ul><li>mint function</li><li>fee/tax setter</li><li>blacklist function</li><li>pause function</li><li>transfer hook anyone can flip</li></ul>Supply is fixed and nobody can change it — not the deployer, not anyone.<br><br>There is exactly one setter function in the whole contract: <b>setInitialBuyRecipient</b>, and it can only be called by the launch factory. It exists purely so the factory's initial buy can bypass the anti-snipe limits at deploy — a launch mechanic, not a backdoor. The anti-snipe limits themselves expire automatically by block number. Nobody has to switch them off; they just end.<h4>Read</h4>Fixed supply, a real burn (not a cosmetic one), tight holder distribution with no visible insider clustering, and a contract with no owner-controlled functions at all. About as clean as this kind of review gets.<h4>Usage (via DefiLlama)</h4><ul><li>Market cap: $23.68M</li><li>Fully diluted valuation: $32.91M</li><li>$PONS price: $0.033</li><li>24h volume: $4.62M</li><li>Annualized fees: $238.75M</li><li>Annualized revenue: $61.8M</li><li>Annualized holder revenue: $31.5M</li><li>30-day DEX volume: $32.78M</li></ul>Clean contract mechanics matter less if nobody's using the thing — this isn't that. Real, ongoing volume and revenue behind it, not just a well-built shell.",
+      "source": "robinhoodchain.blockscout.com · defillama.com/protocol/pons"
+    },
+    {
+      "title": "STONKBROKER",
+      "date": "2026",
+      "chain": "Robinhood Chain",
+      "verdict": "pass",
+      "teaser": "Verified contract, mint authority renounced, holder distribution reasonable at time of review.",
+      "body": "<h4>Note</h4>This entry is a placeholder — full writeup to be expanded with the same level of detail as the PONS report above (supply breakdown, exact holder percentages, contract function review).<h4>Summary (from initial review)</h4><ul><li>Verified contract</li><li>Mint authority renounced</li><li>Holder distribution reasonable at time of review</li><li>Escrow mechanics checked directly against Blockscout data</li></ul>",
+      "source": "robinhoodchain.blockscout.com"
+    }
+  ],
   "lockedCount": 0
 }
