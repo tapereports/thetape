@@ -177,7 +177,7 @@
     border: 1px solid var(--steel); padding: 8px 20px; letter-spacing: 1px; text-transform: uppercase;
   }
 
-  .deepdive { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--steel-bright); padding: 18px 20px; margin-bottom: 16px; }
+  .deepdive { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--steel-bright); padding: 18px 20px; margin-bottom: 16px; cursor: pointer; }
   .dd-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
   .dd-title { font-family: 'Courier Prime', monospace; font-weight: 700; font-size: 16px; }
   .dd-date { font-size: 11px; color: var(--grey); }
@@ -187,8 +187,16 @@
   }
   .dd-verdict.reject { color: var(--stamp-red); border: 1px solid var(--stamp-red); }
   .dd-verdict.pass { color: var(--stamp-green); border: 1px solid var(--stamp-green); }
-  .dd-body { font-size: 12px; color: var(--grey); line-height: 1.7; }
+  .dd-teaser { font-size: 12px; color: var(--grey); line-height: 1.7; }
+  .dd-body { font-size: 12px; color: var(--grey); line-height: 1.8; display: none; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
+  .dd-body.open { display: block; }
+  .dd-body h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 1.5px; color: var(--steel-bright); text-transform: uppercase; margin: 16px 0 8px; }
+  .dd-body h4:first-child { margin-top: 0; }
   .dd-body b { color: var(--white); }
+  .dd-body ul { margin: 6px 0; padding-left: 18px; }
+  .dd-body li { margin: 3px 0; }
+  .dd-source { font-size: 10px; color: var(--steel); margin-top: 14px; letter-spacing: 0.5px; }
+  .dd-expand { font-size: 11px; color: var(--steel-bright); margin-top: 10px; letter-spacing: 1px; }
 
   .footer { max-width: 800px; margin: 30px auto 0; padding: 0 20px; font-size: 11px; color: var(--grey); line-height: 1.7; }
 </style>
@@ -369,18 +377,31 @@
 
     const ddWrap = document.getElementById('deepdiveWrap');
     if (data.deepdives && data.deepdives.length) {
-      ddWrap.innerHTML = data.deepdives.map(dd => {
+      ddWrap.innerHTML = data.deepdives.map((dd, i) => {
         const verdictClass = dd.verdict === 'pass' ? 'pass' : 'reject';
         const verdictText = dd.verdict === 'pass' ? 'CLEARED' : 'REJECTED';
-        return `<div class="deepdive">
+        const sourceLine = dd.source ? `<div class="dd-source">SOURCE: ${esc(dd.source)}</div>` : '';
+        return `<div class="deepdive" data-dd="${i}">
           <div class="dd-head">
             <span class="dd-title">${esc(dd.title)}</span>
             <span class="dd-date">FIELD REPORT — ${esc(dd.date)}</span>
           </div>
           <div class="dd-verdict ${verdictClass}">${verdictText}</div>
-          <div class="dd-body">${dd.body}</div>
+          ${dd.teaser ? `<div class="dd-teaser">${dd.teaser}</div>` : ''}
+          <div class="dd-body" id="dd-body-${i}">${dd.body}${sourceLine}</div>
+          <div class="dd-expand" id="dd-toggle-${i}">+ read full report</div>
         </div>`;
       }).join('');
+
+      document.querySelectorAll('.deepdive').forEach(card => {
+        card.addEventListener('click', () => {
+          const i = card.dataset.dd;
+          const body = document.getElementById('dd-body-' + i);
+          const toggle = document.getElementById('dd-toggle-' + i);
+          const isOpen = body.classList.toggle('open');
+          toggle.textContent = isOpen ? '− collapse' : '+ read full report';
+        });
+      });
     }
   }
 
