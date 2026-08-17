@@ -1,0 +1,30 @@
+{
+  "lastUpdate": "2026-08-17 (manual pull)",
+  "tapeStrip": [
+    "$GTA6 · 20 MENTIONS · 45% FROM ONE SOURCE",
+    "$ANSEM · 6 MENTIONS · TRACKED ROSTER",
+    "TRACKED: @blknoiz06 · @CrashiusClay69 · @CryptoGodJohn"
+  ],
+  "dispatches": [
+    {
+      "ticker": "$GTA6",
+      "mentions": 20,
+      "accountsTracked": 12,
+      "priceChange24h": "+4.9%",
+      "quote": "Netflix is supporting the release of the GTA trailer like the Super Bowl — this is going to be...",
+      "who": "@CryptoGodJohn",
+      "followers": "915,953",
+      "time": "tonight",
+      "flag": "CONCENTRATED SOURCE"
+    }
+  ],
+  "deepdives": [
+    {
+      "title": "GTA6",
+      "date": "AUG 2026",
+      "verdict": "reject",
+      "body": "20 mentions found across 12 unique accounts, but <b>45% traced back to a single account with roughly 100 followers</b> — not organic spread. Most-quoted \"top voices\" leaned promotional (\"beautiful chart trajectories,\" countdown framing to a specific date); the one account with genuinely large reach (@CryptoGodJohn, 915K followers) was the most neutral, referencing the real Netflix/trailer news event rather than price talk.<br><br><b>On-chain:</b> mint authority revoked, freeze authority revoked, LP locked 99% — the basics are clean. But <b>private wallets hold an adjusted 27.3% of supply</b> — inferred from wallet behaviour, not confirmed. Entry-flow analysis showed net outflow and seller-dominant pressure — price moved up more than actual net buying justified, and the liquidity pool has been shrinking (-5.3% over ~70 hours). VWAP read: price sitting 21.6% above VWAP with no strong support underneath — thin.<br><br><b>Read:</b> clean contract fundamentals sitting on top of manufactured-looking hype and weakening flow. Not a confirmed rug — no evidence of malicious contract code — but the mention volume that would normally read as \"organic buzz\" mostly wasn't, and the price action isn't backed by real net buying pressure right now."
+    }
+  ],
+  "lockedCount": 0
+}
