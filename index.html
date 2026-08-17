@@ -184,9 +184,8 @@
   .dd-verdict {
     display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 11px;
     letter-spacing: 1px; padding: 3px 9px; margin-bottom: 10px;
+    color: var(--steel-bright); border: 1px solid var(--steel);
   }
-  .dd-verdict.reject { color: var(--stamp-red); border: 1px solid var(--stamp-red); }
-  .dd-verdict.pass { color: var(--stamp-green); border: 1px solid var(--stamp-green); }
   .dd-teaser { font-size: 12px; color: var(--grey); line-height: 1.7; }
   .dd-body { font-size: 12px; color: var(--grey); line-height: 1.8; display: none; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
   .dd-body.open { display: block; }
@@ -393,16 +392,15 @@
     if (!items || !items.length) return;
 
     wrap.innerHTML = items.map((dd, i) => {
-      const verdictClass = dd.verdict === 'pass' ? 'pass' : 'reject';
-      const verdictText = dd.verdict === 'pass' ? 'CLEARED' : 'REJECTED';
+      const verdictText = 'LOGGED';
       const sourceLine = dd.source ? `<div class="dd-source">SOURCE: ${esc(dd.source)}</div>` : '';
-      const chainTag = dd.chain ? `<span class="dd-date">${esc(dd.chain)}</span>` : '';
+      const caseLabel = dd.case ? `CASE ${esc(dd.case)} — ` : '';
       return `<div class="deepdive" data-id="${prefix}-${i}">
         <div class="dd-head">
-          <span class="dd-title">${esc(dd.title)}</span>
+          <span class="dd-title">${caseLabel}${esc(dd.title)}</span>
           <span class="dd-date">FIELD REPORT — ${esc(dd.date)}${dd.chain ? ' — ' + esc(dd.chain) : ''}</span>
         </div>
-        <div class="dd-verdict ${verdictClass}">${verdictText}</div>
+        <div class="dd-verdict">${verdictText}</div>
         ${dd.teaser ? `<div class="dd-teaser">${dd.teaser}</div>` : ''}
         <div class="dd-body" id="body-${prefix}-${i}">${dd.body}${sourceLine}</div>
         <div class="dd-expand" id="toggle-${prefix}-${i}">+ read full report</div>

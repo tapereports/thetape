@@ -22,6 +22,7 @@
     {
       "title": "GTA6",
       "date": "AUG 2026",
+      "case": "001",
       "verdict": "reject",
       "teaser": "Clean contract fundamentals sitting on top of manufactured-looking hype and weakening flow. Full breakdown below.",
       "body": "<h4>Mentions</h4>20 mentions found across 12 unique accounts. <b>45% (9 of 20) traced back to a single account with roughly 100 followers</b> — not organic spread, one account doing most of the talking. The three most-followed accounts quoting the ticker leaned promotional in tone (\"beautiful chart trajectories,\" a countdown to a specific date 11 days out). The one account with genuinely large reach, @CryptoGodJohn (915,953 followers), was the most neutral of the group — referencing the real Netflix/trailer news event rather than talking price action.<br><br><h4>Market</h4><ul><li>Price: $0.002774 (+4.9% 24h)</li><li>Market cap: $2.8M</li><li>24h volume: $551K</li><li>Age: 10 days</li><li>Liquidity: $291K (10.47% of mcap)</li></ul><h4>Holder Structure</h4><ul><li>11,570 holders total</li><li>Top holders combined: 32.3% (LP 1.1%, private wallets 31.2%)</li><li>Gini coefficient: 0.21 (0 = perfectly equal, 1 = one wallet owns all)</li><li>Adjusted private-wallet estimate: 27.3% — inferred from wallet behaviour patterns (clustering, funding source similarity), not confirmed on-chain fact. Two of the eight flagged wallets read as \"likely custody\" rather than a single controlling party.</li></ul><h4>Contract Security</h4><ul><li>Mint authority: revoked</li><li>Freeze authority: revoked</li><li>LP locked: 99%</li></ul>No red flags in the base contract mechanics — this isn't a honeypot or a mint-anytime setup.<br><br><h4>Flow &amp; Liquidity (entry-scan pass)</h4><ul><li>Flow quality: 7/100 — actual price move (+6.0%) far exceeds what net buying volume justifies (implied -15.4% from flow data). Net flow was <b>negative $11,656</b> against a $145K reserve.</li><li>Liquidity trend: pool shrank from $307K to $291K over ~70 hours (-5.3%) — liquidity leaving, not entering.</li><li>Buy pressure: seller-dominant, net outflow. Buy/sell volume ratio 0.96x. Wash-trade discount applied to the raw flow ratio given the volume pattern.</li><li>VWAP: price sitting 21.6% above the 3-day VWAP anchor, with no strong support node underneath — thin air pocket below current price, no trapped buyers acting as a floor.</li></ul><h4>Read</h4>The contract itself is clean — revoked authorities, locked liquidity, no malicious code found. But the two things that would normally make a launch like this look genuinely strong — organic social proof and real net buying — both come apart under a closer look. Nearly half the visible \"buzz\" traces to one small account, and the price run has outpaced actual buying pressure, sitting on a shrinking liquidity pool. Not a confirmed rug. Not a clean pass either — the fundamentals are fine, the momentum backing the current price isn't.",
@@ -32,6 +33,7 @@
     {
       "title": "PONS",
       "date": "2026",
+      "case": "002",
       "chain": "Robinhood Chain",
       "verdict": "pass",
       "teaser": "Fixed supply, over a quarter of it permanently burned, no owner privileges in the contract at all. One of the cleaner setups reviewed here.",
@@ -41,6 +43,7 @@
     {
       "title": "STONKBROKER",
       "date": "2026",
+      "case": "003",
       "chain": "Robinhood Chain",
       "verdict": "pass",
       "teaser": "No revenue mechanism confirmed — this one earns its spot on mechanics, not money. A reserve contract that only unlocks supply through actual protocol use, audited, no upgrade path.",
