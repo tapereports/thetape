@@ -1,9 +1,11 @@
 {
-  "lastUpdate": "2026-08-17 (manual pull)",
+  "lastUpdate": "2026-08-19 (manual pull)",
   "tapeStrip": [
+    "8 ACCOUNTS TRACKED",
+    "@blknoiz06 \u00b7 @CrashiusClay69 \u00b7 @CryptoGodJohn \u00b7 @Hustlepedia",
+    "@cryptogorilla \u00b7 @cryptothanos \u00b7 @cryptocurb \u00b7 @levisnft",
     "$GTA6 \u00b7 20 MENTIONS \u00b7 45% FROM ONE SOURCE",
-    "$ANSEM \u00b7 6 MENTIONS \u00b7 TRACKED ROSTER",
-    "TRACKED: @blknoiz06 \u00b7 @CrashiusClay69 \u00b7 @CryptoGodJohn"
+    "$ANSEM \u00b7 10 MENTIONS \u00b7 TRACKED ROSTER"
   ],
   "dispatches": [
     {
@@ -79,5 +81,15 @@
       "source": "stackers.cash/docs \u00b7 robinhoodchain.blockscout.com API \u00b7 api.dexscreener.com \u00b7 checkbot /check + /entry + /social \u00b7 pulled 2026-08-18/19"
     }
   ],
-  "lockedCount": 0
+  "lockedCount": 0,
+  "trackedRoster": [
+    "@blknoiz06",
+    "@CrashiusClay69",
+    "@CryptoGodJohn",
+    "@Hustlepedia",
+    "@cryptogorilla",
+    "@cryptothanos",
+    "@cryptocurb",
+    "@levisnft"
+  ]
 }

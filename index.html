@@ -225,6 +225,10 @@
     <br><br>
     Mentions and on-chain data are pulled through a tool built for exactly this — same discipline as everything else here:
     check first, publish what's actually there.
+    <br><br>
+    What gets researched can come from either the tracker or just being active on X — spotting something worth digging
+    into doesn't need to come from a pull. Where it came from doesn't change what happens next: every case gets the
+    same check, on-chain, regardless of how it was found.
   </div>
 
   <div class="disclosure">
@@ -242,7 +246,8 @@
 
     <div class="panel-section active" id="panel-tracker">
       <div class="section-title">Tracker — free wire</div>
-      <div class="section-desc">what tracked accounts are actually saying, quoted directly. mention counts are raw, not curated.</div>
+      <div class="section-desc">what tracked accounts are actually saying, quoted directly. mention counts are raw, not curated. one input among a few — see the mission note above.</div>
+      <div id="rosterWrap" style="font-size:11px;color:var(--steel);margin-bottom:16px;"></div>
       <div class="last-update" id="lastUpdate">Last update: —</div>
       <div id="dispatchWrap">
         <div class="empty-state">NO DISPATCHES YET. First manual pull goes here.</div>
@@ -276,7 +281,7 @@
       <div class="roadmap">
         <div class="road-item">
           <span class="road-status live">LIVE</span>
-          <span class="road-text">Mention tracker — free tier, 1-2 accounts<span>manual daily pulls via Sorsa, hand-checked before publishing</span></span>
+          <span class="road-text">Mention tracker — free tier, roster growing organically<span>manual daily pulls via Sorsa, hand-checked before publishing — see current roster on the Tracker tab</span></span>
         </div>
         <div class="road-item">
           <span class="road-status live">LIVE</span>
@@ -352,6 +357,11 @@
   function render(data) {
     if (data.lastUpdate) {
       document.getElementById('lastUpdate').textContent = 'Last update: ' + data.lastUpdate;
+    }
+
+    if (data.trackedRoster && data.trackedRoster.length) {
+      document.getElementById('rosterWrap').textContent =
+        'TRACKED (' + data.trackedRoster.length + '): ' + data.trackedRoster.join(' · ');
     }
 
     if (data.tapeStrip && data.tapeStrip.length) {
