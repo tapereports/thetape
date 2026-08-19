@@ -409,7 +409,8 @@
       const verdictText = 'LOGGED';
       const sourceLine = dd.source ? `<div class="dd-source">SOURCE: ${esc(dd.source)}</div>` : '';
       const caseLabel = dd.case ? `CASE ${esc(dd.case)} — ` : '';
-      return `<div class="deepdive" data-id="${prefix}-${i}">
+      const caseId = dd.case ? `case-${dd.case}` : `${prefix}-${i}`;
+      return `<div class="deepdive" id="${caseId}" data-id="${prefix}-${i}" data-panel="${wrapId === 'deepdiveWrap' ? 'deepdives' : 'independent'}">
         <div class="dd-head">
           <span class="dd-title">${caseLabel}${esc(dd.title)}</span>
           <span class="dd-date">FIELD REPORT — ${esc(dd.date)}${dd.chain ? ' — ' + esc(dd.chain) : ''}</span>
@@ -433,6 +434,35 @@
   }
 
   loadData();
+
+  // Deep-link support: thetape.fyi/#case-007 opens straight to that card
+  window.addEventListener('load', () => {
+    // small delay to let render() finish populating the DOM first
+    setTimeout(() => {
+      const hash = window.location.hash.replace('#', '');
+      if (!hash) return;
+      const target = document.getElementById(hash) || document.getElementById('case-' + hash);
+      if (!target) return;
+
+      const panel = target.dataset.panel;
+      if (panel) {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.panel-section').forEach(p => p.classList.remove('active'));
+        document.querySelector(`.tab[data-tab="${panel}"]`).classList.add('active');
+        document.getElementById('panel-' + panel).classList.add('active');
+      }
+
+      const id = target.dataset.id;
+      const body = document.getElementById('body-' + id);
+      const toggle = document.getElementById('toggle-' + id);
+      if (body && !body.classList.contains('open')) {
+        body.classList.add('open');
+        if (toggle) toggle.textContent = '− collapse';
+      }
+
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  });
 </script>
 </body>
 </html>
