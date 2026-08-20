@@ -14,8 +14,8 @@
     --line: #2a2e33;
     --paper: #eae5d6;
     --ink: #23201a;
-    --steel: #8a97a3;
-    --steel-bright: #b7c2cc;
+    --steel: #4a8f7f;
+    --steel-bright: #3ddc97;
     --stamp-red: #a5453d;
     --stamp-green: #5c7d63;
     --grey: #aab0b6;
@@ -87,7 +87,7 @@
   .masthead .sub b { color: var(--steel-bright); }
 
   .mission {
-    max-width: 620px;
+    max-width: 700px;
     margin: 26px auto 0;
     padding: 20px 24px;
     text-align: center;
@@ -98,7 +98,7 @@
   .mission b { color: var(--white); }
 
   .disclosure {
-    max-width: 620px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 0 24px 20px;
     text-align: center;
@@ -126,7 +126,7 @@
   }
   .tab.active { color: var(--white); background: var(--bg); border-bottom: 2px solid var(--steel-bright); margin-bottom: -1px; }
 
-  .content { max-width: 800px; margin: 0 auto; padding: 44px 20px 0; }
+  .content { max-width: 1180px; margin: 0 auto; padding: 44px 32px 0; }
   .panel-section { display: none; }
   .panel-section.active { display: block; }
 
@@ -168,7 +168,14 @@
   .dispatch-quote { font-size: 13px; line-height: 1.6; color: var(--paper); border-left: 2px solid var(--steel); padding: 2px 0 2px 14px; }
   .dispatch-quote .who { display: block; font-size: 11px; color: var(--grey); margin-top: 6px; }
 
-  .empty-state { border: 1px dashed var(--line); padding: 20px; font-size: 12px; color: var(--grey); text-align: center; }
+  #dispatchWrap, #deepdiveWrap, #independentWrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 18px;
+    align-items: start;
+  }
+
+  .empty-state { border: 1px dashed var(--line); padding: 20px; font-size: 12px; color: var(--grey); text-align: center; grid-column: 1 / -1; }
 
   .lock-panel { background: var(--panel); border: 1px dashed var(--line); padding: 22px; text-align: center; margin: 24px 0; }
   .lock-panel p { font-size: 12px; color: var(--grey); margin: 0 0 4px; }
@@ -197,7 +204,7 @@
   .dd-source { font-size: 10px; color: var(--steel); margin-top: 14px; letter-spacing: 0.5px; }
   .dd-expand { font-size: 11px; color: var(--steel-bright); margin-top: 10px; letter-spacing: 1px; }
 
-  .footer { max-width: 800px; margin: 30px auto 0; padding: 0 20px; font-size: 11px; color: var(--grey); line-height: 1.7; }
+  .footer { max-width: 1180px; margin: 30px auto 0; padding: 0 32px; font-size: 11px; color: var(--grey); line-height: 1.7; }
 </style>
 </head>
 <body>
