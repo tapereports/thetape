@@ -1,9 +1,11 @@
 {
   "lastUpdate": "2026-08-22 (manual pull)",
+  "disclaimer": "All metrics, market data, and wallet analysis represent an on-chain point-in-time snapshot pulled at the date and time logged in each case. Liquidity, price flow, holder concentration, and volume change continuously and may shift rapidly post-publication.",
   "tapeStrip": [
-    "8 ACCOUNTS TRACKED",
-    "@blknoiz06 · @CrashiusClay69 · @CryptoGodJohn · @Hustlepedia",
-    "@cryptogorilla · @cryptothanos · @cryptocurb · @levisnft",
+    "15 ACCOUNTS TRACKED",
+    "@blknoiz06 · @CrashiusClay69 · @CryptoGodJohn · @Hustlepedia · @cryptogorilla",
+    "@cryptothanos · @cryptocurb · @levisnft · @LarpVonTrier · @artsch00lreject",
+    "@thecexoffender · @iambroots · @0xSunNFT · @RektFencer · @sol_trader",
     "$ANSEM6900 · CASE 006 LOGGED · FLOW DIVERGENCE",
     "$GTA6 · 20 MENTIONS · 45% FROM ONE SOURCE",
     "$ANSEM · 10 MENTIONS · TRACKED ROSTER"
@@ -108,7 +110,14 @@
     "@cryptogorilla",
     "@cryptothanos",
     "@cryptocurb",
-    "@levisnft"
+    "@levisnft",
+    "@LarpVonTrier",
+    "@artsch00lreject",
+    "@thecexoffender",
+    "@iambroots",
+    "@0xSunNFT",
+    "@RektFencer",
+    "@sol_trader"
   ],
   "forensics": [
     {
