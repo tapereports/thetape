@@ -14,8 +14,8 @@
     --line: #2a2e33;
     --paper: #eae5d6;
     --ink: #23201a;
-    --steel: #3a5a8f;
-    --steel-bright: #4c8bf5;
+    --steel: #0099CC;
+    --steel-bright: #00EDFF;
     --stamp-red: #a5453d;
     --stamp-green: #5c7d63;
     --grey: #aab0b6;
@@ -155,7 +155,7 @@
   .road-text { font-size: 13px; color: var(--white); }
   .road-text span { display: block; font-size: 11px; color: var(--grey); margin-top: 2px; }
 
-  .dispatch { background: var(--panel); border: 1px solid var(--line); padding: 18px 20px; margin-bottom: 16px; }
+  .dispatch { background: var(--panel); border: 1px solid var(--line); padding: 18px 20px; margin-bottom: 16px; position: relative; }
   .dispatch-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
   .dispatch-ticker { font-family: 'Courier Prime', monospace; font-weight: 700; font-size: 19px; }
   .dispatch-stamp {
@@ -184,7 +184,7 @@
     border: 1px solid var(--steel); padding: 8px 20px; letter-spacing: 1px; text-transform: uppercase;
   }
 
-  .deepdive { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--steel-bright); padding: 18px 20px; margin-bottom: 16px; cursor: pointer; }
+  .deepdive { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--steel-bright); padding: 18px 20px; margin-bottom: 16px; cursor: pointer; position: relative; }
   .dd-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
   .dd-title { font-family: 'Courier Prime', monospace; font-weight: 700; font-size: 16px; }
   .dd-date { font-size: 11px; color: var(--grey); }
@@ -205,6 +205,28 @@
   .dd-expand { font-size: 11px; color: var(--steel-bright); margin-top: 10px; letter-spacing: 1px; }
 
   .footer { max-width: 1180px; margin: 30px auto 0; padding: 0 32px; font-size: 11px; color: var(--grey); line-height: 1.7; }
+
+  .page-mascot {
+    position: fixed;
+    bottom: 0;
+    right: 12px;
+    width: 130px;
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 5;
+  }
+  @media (max-width: 600px) {
+    .page-mascot { width: 80px; }
+  }
+
+  .card-mascot {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 46px;
+    opacity: 0.7;
+    pointer-events: none;
+  }
 </style>
 </head>
 <body>
@@ -334,6 +356,8 @@
     buy, sell, or hold anything shown here.
   </div>
 
+  <img class="page-mascot" src="tape-mascot.png" alt="">
+
 <script>
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -395,6 +419,7 @@
             "${esc(d.quote)}"
             <span class="who">— ${esc(d.who || '')} · ${esc(d.followers || '')} followers · ${esc(d.time || '')}</span>
           </div>` : ''}
+          <img class="card-mascot" src="tape-mascot.png" alt="">
         </div>`;
       }).join('');
     }
@@ -426,6 +451,7 @@
         ${dd.teaser ? `<div class="dd-teaser">${dd.teaser}</div>` : ''}
         <div class="dd-body" id="body-${prefix}-${i}">${dd.body}${sourceLine}</div>
         <div class="dd-expand" id="toggle-${prefix}-${i}">+ read full report</div>
+        <img class="card-mascot" src="tape-mascot.png" alt="">
       </div>`;
     }).join('');
 
