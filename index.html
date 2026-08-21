@@ -187,6 +187,7 @@
   .deepdive { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--steel-bright); padding: 18px 20px; margin-bottom: 16px; cursor: pointer; position: relative; }
   .dd-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
   .dd-title { font-family: 'Courier Prime', monospace; font-weight: 700; font-size: 16px; }
+  .dd-tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 13px; color: var(--steel-bright); letter-spacing: 1px; }
   .dd-date { font-size: 11px; color: var(--grey); }
   .dd-verdict {
     display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 11px;
@@ -266,8 +267,8 @@
 
   <div class="tabs">
     <div class="tab active" data-tab="tracker">Tracker</div>
+    <div class="tab" data-tab="forensics">Forensics</div>
     <div class="tab" data-tab="deepdives">Deep Dives</div>
-    <div class="tab" data-tab="independent">Interesting Projects</div>
     <div class="tab" data-tab="roadmap">Roadmap</div>
   </div>
 
@@ -288,19 +289,19 @@
       </div>
     </div>
 
-    <div class="panel-section" id="panel-deepdives">
-      <div class="section-title">Deep Dives</div>
-      <div class="section-desc">separate from the tracker. published rarely — only when a project is worth the actual on-chain digging.</div>
-      <div id="deepdiveWrap">
-        <div class="empty-state">NO DEEP DIVES PUBLISHED YET.</div>
+    <div class="panel-section" id="panel-forensics">
+      <div class="section-title">Forensics</div>
+      <div class="section-desc">post-mortems on how bad actors and misleading scanner reads slip past surface-level checks. published only when a real, verified pattern is worth documenting — not hypotheticals, not examples.</div>
+      <div id="forensicsWrap">
+        <div class="empty-state">NOTHING PUBLISHED YET. Cases here are verified on-chain before anything goes up — none ready yet.</div>
       </div>
     </div>
 
-    <div class="panel-section" id="panel-independent">
-      <div class="section-title">Interesting Projects</div>
-      <div class="section-desc">independent research, not tied to the tracker or any tickers big accounts are pushing — any chain, published because it was worth digging into.</div>
-      <div id="independentWrap">
-        <div class="empty-state">NOTHING PUBLISHED YET.</div>
+    <div class="panel-section" id="panel-deepdives">
+      <div class="section-title">Deep Dives</div>
+      <div class="section-desc">project and mechanism research — mention-triggered or independent, any chain. tagged by type: [FIELD REPORT] (tracker-triggered), [MECHANICS] (independent research), [KOL ANALYSIS] (account/platform reviews).</div>
+      <div id="deepdiveWrap">
+        <div class="empty-state">NO DEEP DIVES PUBLISHED YET.</div>
       </div>
     </div>
 
@@ -319,6 +320,10 @@
         <div class="road-item">
           <span class="road-status live">LIVE</span>
           <span class="road-text">Cross-check divergent signals<span>when one data source looks off against another (e.g. price up but flow data shows outflow), pull a second independent source before publishing — don't take one number at face value</span></span>
+        </div>
+        <div class="road-item">
+          <span class="road-status building">BUILDING</span>
+          <span class="road-text">Forensics category<span>post-mortems on extraction patterns and misleading scanner reads — only real, verified cases, no hypotheticals</span></span>
         </div>
         <div class="road-item">
           <span class="road-status building">BUILDING</span>
@@ -429,8 +434,9 @@
         data.lockedCount > 0 ? `${data.lockedCount} MORE DISPATCHES LOGGED TODAY` : 'FULL ROSTER COMING SOON';
     }
 
-    renderDeepdiveList(data.deepdives, 'deepdiveWrap', 'dd');
-    renderDeepdiveList(data.independent, 'independentWrap', 'ip');
+    const mergedDeepdives = [...(data.deepdives || []), ...(data.independent || [])];
+    renderDeepdiveList(mergedDeepdives, 'deepdiveWrap', 'dd');
+    renderDeepdiveList(data.forensics, 'forensicsWrap', 'fx');
   }
 
   function renderDeepdiveList(items, wrapId, prefix) {
@@ -441,10 +447,11 @@
       const verdictText = 'LOGGED';
       const sourceLine = dd.source ? `<div class="dd-source">SOURCE: ${esc(dd.source)}</div>` : '';
       const caseLabel = dd.case ? `CASE ${esc(dd.case)} — ` : '';
+      const tagLabel = dd.tag ? `<span class="dd-tag">[${esc(dd.tag)}]</span> ` : '';
       const caseId = dd.case ? `case-${dd.case}` : `${prefix}-${i}`;
-      return `<div class="deepdive" id="${caseId}" data-id="${prefix}-${i}" data-panel="${wrapId === 'deepdiveWrap' ? 'deepdives' : 'independent'}">
+      return `<div class="deepdive" id="${caseId}" data-id="${prefix}-${i}" data-panel="${wrapId === 'forensicsWrap' ? 'forensics' : 'deepdives'}">
         <div class="dd-head">
-          <span class="dd-title">${caseLabel}${esc(dd.title)}</span>
+          <span class="dd-title">${tagLabel}${caseLabel}${esc(dd.title)}</span>
           <span class="dd-date">FIELD REPORT — ${esc(dd.date)}${dd.chain ? ' — ' + esc(dd.chain) : ''}</span>
         </div>
         <div class="dd-verdict">${verdictText}</div>
