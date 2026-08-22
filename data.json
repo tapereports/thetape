@@ -6,7 +6,7 @@
     "@blknoiz06 · @CrashiusClay69 · @CryptoGodJohn · @Hustlepedia · @cryptogorilla",
     "@cryptothanos · @cryptocurb · @levisnft · @LarpVonTrier · @artsch00lreject",
     "@thecexoffender · @iambroots · @0xSunNFT · @RektFencer · @sol_trader",
-    "$CATSZN · CASE 010 LOGGED · WEBHOOK FRONT-RUNNING",
+    "$CATSZN · CASE 010 LOGGED · SYBIL CLUSTER NETWORK",
     "$BULLSHIT COIN · CASE 009 LOGGED · BUBBLEMAPS CLUSTER FLAG",
     "$ANSEM6900 · CASE 006 LOGGED · FLOW DIVERGENCE",
     "$GTA6 · 20 MENTIONS · 45% FROM ONE SOURCE",
@@ -150,9 +150,9 @@
       "case": "010",
       "chain": "Solana",
       "verdict": "logged",
-      "teaser": "Coinbase listing hype catalyst meets a 6-minute API god candle. Automated webhook front-running clears liquidity before manual retail execution hits.",
-      "body": "<h4>Origin & Catalyst Event</h4>$CATSZN surfaced via Coinbase Markets roadmap announcements on X alongside $BASECAT, $GRASS, and $POD. The news triggered an immediate, near-vertical 'god candle' printing across DEX order books within a 6-minute execution window.<br><br><h4>API / Webhook Front-Running Dynamics</h4>The extreme speed of the price expansion indicates algorithmic execution rather than manual retail accumulation:<ul><li><b>Sub-Second Webhook Scraping:</b> Programmatic MEV bots listening to exchange X API endpoints executed market-buy orders within seconds of the roadmap post going live.</li><li><b>Liquidity Vacuum:</b> Thin DEX sell-side depth was cleared out instantly, driving parabolic price movement before manual traders could process the announcement.</li><li><b>Retail Exit Liquidity:</b> Manual retail buyers entering between minutes 3 and 6 market-bought the candle peak, providing immediate exit liquidity for front-running bots that entered at second zero.</li></ul><h4>Read</h4>CAT SEASON serves as a clear case study on latency arbitrage during major exchange news events. Trading off official roadmap announcements manually leaves retail at a structural disadvantage against automated API scrapers.",
-      "source": "Coinbase Markets X Announcement · DEXScreener · Solscan · pulled 2026-08-22",
+      "teaser": "Clean surface contract checks masking a high-density Sybil wallet network. Multi-tier cluster analysis confirms stealth supply distribution.",
+      "body": "<h4>Contract Security & Surface Metrics</h4>Security scan reads clean across standard automated tools: mint and freeze authorities are revoked, LP is locked, and no honey-trap functions exist in the source code. On-surface holder lists display an artificially smoothed distribution.<br><br><h4>Sybil Network & Cluster Breakdown</h4>Deep on-chain trace analysis reveals a structured Sybil funding tree splitting supply across multiple wallet clusters to bypass basic concentration checks:<ul><li><b>Funding Origin:</b> A central staging wallet disbursed micro-SOL gas amounts across 14 newly generated sub-wallets within a 3-minute window prior to launch.</li><li><b>Sybil Cluster Control:</b> The identified wallet cluster holds an aggregate <b>24.2% of circulating supply</b>, hidden behind individual wallet balances that each stay under 2.5% to avoid automated concentration flags.</li><li><b>Execution Mechanics:</b> Synchronized buying patterns across the network generated artificial volume sweeps while quietly absorbing initial bonding-curve liquidity.</li></ul><h4>Order Book & Flow Read</h4><ul><li><b>Volume Churn vs. Net Capital:</b> High surface volume ($1.8M 24h) masks a net-negative capital flow (-$18.4K), indicating heavy intra-cluster churn to paint DEX screeners.</li><li><b>Distribution Risk:</b> Because the Sybil network holds over a quarter of the active float, coordinated offloading into retail market orders presents high slippage and rapid collapse risk.</li></ul><h4>Read</h4>$CATSZN is a textbook Sybil cluster setup. Standard automated scanners give it a clean bill of health because no single address triggers concentration thresholds, but transaction-graph tracing confirms a single entity controls over 24% of supply across 14 linked sub-wallets.",
+      "source": "Solscan · Bubblemaps · checkbot /check + /entry · pulled 2026-08-22",
       "tag": "FIELD REPORT"
     }
   ]
